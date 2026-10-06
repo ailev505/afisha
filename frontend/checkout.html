@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Билет — MOGGED Краснодар</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <h1>🎭 MOGGEатр</h1>
+  <nav class="nav">
+    <a href="index.html">Афиша</a>
+    <a href="admin.html">Админка</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h2>✅ Билет оформлен</h2>
+
+  <div class="ticket" id="ticket">
+    <div class="ticket-header">
+      <h3 id="ticket-play">Спектакль</h3>
+      <p id="ticket-date">Дата</p>
+    </div>
+    <div class="ticket-body">
+      <p><b>Места:</b> <span id="ticket-seats">—</span></p>
+      <p><b>Сумма:</b> <span id="ticket-total">0</span> ₽</p>
+      <p><b>Номер заказа:</b> <span id="ticket-order">—</span></p>
+    </div>
+    <div class="ticket-qr">
+      <div id="qrcode"></div>
+      <p>Покажите QR-код на входе</p>
+    </div>
+  </div>
+
+  <a href="index.html" class="btn-primary">← Вернуться к афише</a>
+</main>
+
+<footer class="footer">
+  <p>© 2026 MOGGED Краснодар. Учебный проект.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="script.js"></script>
+<script>
+  initCheckoutPage();
+</script>
+</body>
+</html>

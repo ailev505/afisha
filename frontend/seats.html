@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Выбор места — MOGGED Краснодар</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <h1>🎭 MOGGEатр</h1>
+  <nav class="nav">
+    <a href="index.html">Афиша</a>
+    <a href="admin.html">Админка</a>
+  </nav>
+</header>
+
+<main class="container">
+  <a href="index.html" class="back-link">← Назад к афише</a>
+  <h2 id="play-title">Выбор места</h2>
+
+  <div class="screen">СЦЕНА</div>
+  <div id="seats-grid" class="seats-grid">
+    <p class="loading">Загрузка мест...</p>
+  </div>
+
+  <div class="legend">
+    <span class="legend-item"><span class="seat free"></span> Свободно</span>
+    <span class="legend-item"><span class="seat taken"></span> Занято</span>
+    <span class="legend-item"><span class="seat selected"></span> Выбрано</span>
+  </div>
+
+  <div class="checkout-bar">
+    <div>
+      <b>Выбрано мест:</b> <span id="selected-count">0</span><br>
+      <b>Итого:</b> <span id="total-price">0</span> ₽
+    </div>
+    <button id="buy-btn" class="btn-primary" disabled>Купить</button>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>© 2026 MOGGED Краснодар. Учебный проект.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  initSeatsPage();
+</script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+/* ===== Базовое ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #000;
+  --dark: #1a1a1a;
+  --gray-dark: #333;
+  --gray: #666;
+  --gray-light: #ccc;
+  --gray-lighter: #e6e6e6;
+  --bg: #fff;
+  --panel: #f5f5f5;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--bg);
+  color: var(--black);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Шапка ===== */
+.header {
+  background: var(--black);
+  color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header h1 { font-size: 22px; }
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.nav a:hover { background: var(--gray-dark); }
+.nav a.active { background: var(--gray); }
+
+/* ===== Контейнер ===== */
+.container {
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  width: 100%;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--black);
+  padding-bottom: 8px;
+}
+
+.loading {
+  color: var(--gray);
+  font-style: italic;
+  padding: 20px;
+  text-align: center;
+}
+
+/* ===== Афиша ===== */
+.plays-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.play-card {
+  background: var(--panel);
+  border: 2px solid var(--black);
+  border-radius: 10px;
+  padding: 18px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.play-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.play-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.play-card .date {
+  color: var(--gray-dark);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.play-card .price {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.play-card .seats-left {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 12px;
+}
+
+/* ===== Кнопки ===== */
+.btn-primary {
+  display: inline-block;
+  background: var(--black);
+  color: #fff;
+  border: 2px solid var(--black);
+  padding: 10px 22px;
+  font-size: 15px;
+  font-family: inherit;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #fff;
+  color: var(--black);
+}
+
+.btn-primary:disabled {
+  background: var(--gray-light);
+  border-color: var(--gray-light);
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  background: #fff;
+  color: var(--black);
+  border: 2px solid var(--black);
+  padding: 6px 14px;
+  font-family: inherit;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background: var(--black);
+  color: #fff;
+}
+
+/* ===== Зал ===== */
+.back-link {
+  display: inline-block;
+  color: var(--gray-dark);
+  text-decoration: none;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.back-link:hover { color: var(--black); }
+
+.screen {
+  background: var(--black);
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  border-radius: 30px 30px 0 0;
+  margin: 20px auto 30px;
+  max-width: 500px;
+  letter-spacing: 4px;
+  font-weight: bold;
+}
+
+.seats-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 8px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.seat {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  border: 2px solid var(--black);
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seat.free:hover { background: var(--gray-lighter); }
+
+.seat.taken {
+  background: var(--gray-light);
+  border-color: var(--gray-light);
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  background: var(--black);
+  color: #fff;
+}
+
+/* ===== Легенда ===== */
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.legend-item .seat {
+  width: 20px;
+  height: 20px;
+  aspect-ratio: auto;
+  cursor: default;
+}
+
+/* ===== Панель покупки ===== */
+.checkout-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--panel);
+  border: 2px solid var(--black);
+  border-radius: 10px;
+  padding: 18px 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.checkout-bar b { font-size: 15px; }
+
+/* ===== Билет ===== */
+.ticket {
+  background: var(--panel);
+  border: 3px dashed var(--black);
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 500px;
+  margin: 0 auto 30px;
+}
+
+.ticket-header {
+  text-align: center;
+  border-bottom: 2px solid var(--black);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.ticket-header h3 { font-size: 22px; margin-bottom: 5px; }
+.ticket-header p { color: var(--gray-dark); font-size: 14px; }
+
+.ticket-body p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.ticket-qr {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid var(--black);
+}
+
+.ticket-qr #qrcode {
+  display: inline-block;
+  padding: 10px;
+  background: #fff;
+  border: 2px solid var(--black);
+}
+
+.ticket-qr p {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--gray-dark);
+}
+
+/* ===== Админка ===== */
+.admin-section {
+  background: var(--panel);
+  border: 2px solid var(--black);
+  border-radius: 10px;
+  padding: 20px 25px;
+  margin-bottom: 25px;
+}
+
+.admin-section h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.admin-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 5px;
+}
+
+.admin-form input {
+  padding: 8px 10px;
+  border: 2px solid var(--black);
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.admin-form button {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  border: 1px solid var(--gray);
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.admin-table th {
+  background: var(--black);
+  color: #fff;
+}
+
+.admin-table tr:nth-child(even) td {
+  background: var(--gray-lighter);
+}
+
+.admin-note {
+  font-size: 13px;
+  color: var(--gray-dark);
+  font-style: italic;
+  text-align: center;
+}
+
+/* ===== Подвал ===== */
+.footer {
+  background: var(--black);
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  margin-top: auto;
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 600px) {
+  .seats-grid { grid-template-columns: repeat(8, 1fr); }
+  .header { flex-direction: column; gap: 10px; }
+  .nav a { margin: 0 8px; }
+}
